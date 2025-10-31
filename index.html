@@ -131,110 +131,138 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
+            <h2 class="section-title">Experience & Featured Projects</h2>
+            <div class="projects-split-layout">
                 
-                <!-- AI SQL Copilot Project -->
-                <div class="project-card" data-category="ai">
-                    <div class="project-image">
-                        <img src="assets/images/ai-sql-copilot.jpg" alt="AI SQL Copilot">
-                        <div class="project-overlay">
-                            <i class="fas fa-brain"></i>
+                <!-- Left Side - Latest Position -->
+                <div class="experience-section">
+                    <h3 class="subsection-title">
+                        <i class="fas fa-briefcase"></i>
+                        Latest Position
+                    </h3>
+                    <div class="experience-card">
+                        <div class="position-header">
+                            <h4 class="position-title">Data Engineering Analyst 2</h4>
+                            <div class="company-info">
+                                <span class="company-name">Comcast - Data and Experience Team</span>
+                                <span class="duration">Aug 2023 - Present</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>AI SQL Copilot</h3>
-                        <p class="project-tagline">ChatGPT-powered Natural Language Querying over SQL Server</p>
-                        <p class="project-description">
-                            Developed an intelligent SQL assistant that converts natural language questions into optimized SQL queries. 
-                            Features business logic guardrails, query validation, and contextual understanding of database schemas. 
-                            Reduced query time for business users by 80% while maintaining data security standards.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">FastAPI</span>
-                            <span class="tech-badge">OpenAI API</span>
-                            <span class="tech-badge">SQL Server</span>
-                            <span class="tech-badge">LangChain</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ETL Automation Project -->
-                <div class="project-card" data-category="data-engineering">
-                    <div class="project-image">
-                        <img src="assets/images/etl-automation.jpg" alt="ETL Automation">
-                        <div class="project-overlay">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>ETL Automation for HR Data</h3>
-                        <p class="project-tagline">Scalable Python Pipelines + Power BI Integration</p>
-                        <p class="project-description">
-                            Built comprehensive ETL pipelines to automate HR data processing from multiple sources. 
-                            Implemented data quality checks, error handling, and automated reporting. Created real-time 
-                            dashboards in Power BI for HR metrics tracking and decision-making support.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Pandas</span>
-                            <span class="tech-badge">SQL Server</span>
-                            <span class="tech-badge">Power BI</span>
-                            <span class="tech-badge">Task Scheduler</span>
+                        <div class="position-description">
+                            <ul class="achievements-list">
+                                <li>Designed and developed scalable data pipelines, ensuring seamless data flow and quality across web interfaces, REST APIs, internal repositories and multiple databases.</li>
+                                <li>Delivered end-to-end dashboards by managing the full data lifecycle — from pipelines to visualization — empowering leadership with actionable insights.</li>
+                                <li>Implemented supervised models to enhance device performance, and developed predictive solutions for initiatives such as meeting room utilization and KPI purchase reasons, driving AI-based analytics.</li>
+                                <li>Automated manual processes through Python scripting, reducing repetitive effort and enabling faster reporting.</li>
+                                <li>Partnered with cross-functional teams to track KPIs, improve workplace technology experience, and inform strategic decisions.</li>
+                            </ul>
+                            <div class="current-focus">
+                                <i class="fas fa-rocket"></i>
+                                <span>Currently exploring AI integration to enhance existing systems and workflows.</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Attrition Dashboard Project -->
-                <div class="project-card" data-category="analytics">
-                    <div class="project-image">
-                        <img src="assets/images/attrition-dashboard.jpg" alt="Attrition Dashboard">
-                        <div class="project-overlay">
-                            <i class="fas fa-chart-line"></i>
+                <!-- Right Side - Featured Projects -->
+                <div class="featured-projects-section">
+                    <h3 class="subsection-title">
+                        <i class="fas fa-star"></i>
+                        Featured Projects
+                    </h3>
+                    <div class="featured-projects-grid">
+                        
+                        <!-- Project 1: Blood Pressure Estimation -->
+                        <div class="featured-project-card">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i class="fas fa-heartbeat"></i>
+                                </div>
+                                <div class="project-title-area">
+                                    <h4>Non-contact Blood Pressure Estimation</h4>
+                                    <span class="project-type">Academic Research</span>
+                                </div>
+                            </div>
+                            <p class="project-summary">
+                                Developed a cuffless, non-contact BP measurement technique using facial videos from smartphones. 
+                                Based on remote PPG technology, our system extracts features from facial videos to estimate blood pressure. 
+                                Tested on 15 participants under various conditions with regression models proving strong correlation between IBI values and BP.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Computer Vision</span>
+                                <span class="tech-tag">PPG</span>
+                                <span class="tech-tag">Machine Learning</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Employee Attrition Analytics</h3>
-                        <p class="project-tagline">Interactive Power BI Dashboard with Predictive Insights</p>
-                        <p class="project-description">
-                            Designed comprehensive attrition analytics dashboard providing insights into employee turnover patterns. 
-                            Implemented predictive modeling to identify at-risk employees and recommend retention strategies. 
-                            Enabled HR team to reduce attrition by 25% through data-driven interventions.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Power BI</span>
-                            <span class="tech-badge">DAX</span>
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">SQL</span>
-                            <span class="tech-badge">Machine Learning</span>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Predictive Model Project -->
-                <div class="project-card" data-category="ml">
-                    <div class="project-image">
-                        <img src="assets/images/predictive-model.jpg" alt="Predictive Model">
-                        <div class="project-overlay">
-                            <i class="fas fa-robot"></i>
+                        <!-- Project 2: sEMG Analysis -->
+                        <div class="featured-project-card">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i class="fas fa-dumbbell"></i>
+                                </div>
+                                <div class="project-title-area">
+                                    <h4>Muscle Activity Analysis using sEMG</h4>
+                                    <span class="project-type">Academic Research</span>
+                                </div>
+                            </div>
+                            <p class="project-summary">
+                                Analyzed muscle strain and estimated optimum weights for novice trainees using EMG signals from Biceps Brachii. 
+                                Studied 15 subjects (18-22 years), extracted 15 features, and achieved 80% accuracy using AdaBoost and Random Forest classifiers 
+                                for predicting optimal training weights.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Signal Processing</span>
+                                <span class="tech-tag">AdaBoost</span>
+                                <span class="tech-tag">Random Forest</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Predictive Attrition Model</h3>
-                        <p class="project-tagline">Machine Learning for Employee Retention</p>
-                        <p class="project-description">
-                            Developed and deployed a machine learning model using Random Forest and Logistic Regression 
-                            to predict employee attrition. Implemented feature engineering, model validation, and 
-                            automated retraining pipelines. Achieved 87% accuracy in predicting turnover risk.
-                        </p>
-                        <div class="tech-stack">
-                            <span class="tech-badge">Python</span>
-                            <span class="tech-badge">Scikit-learn</span>
-                            <span class="tech-badge">Pandas</span>
-                            <span class="tech-badge">Flask</span>
-                            <span class="tech-badge">Docker</span>
+
+                        <!-- Project 3: Meeting Room Analysis -->
+                        <div class="featured-project-card">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="project-title-area">
+                                    <h4>Meeting Room Analytics Platform</h4>
+                                    <span class="project-type">Professional</span>
+                                </div>
+                            </div>
+                            <p class="project-summary">
+                                Integrated data from CISCO WEBEX API with ETL processing to create impactful dashboards monitoring room usage 
+                                across global Sky offices. Implemented ML models for usage prediction and trend forecasting, optimizing space utilization.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">CISCO API</span>
+                                <span class="tech-tag">ETL</span>
+                                <span class="tech-tag">Predictive Analytics</span>
+                            </div>
                         </div>
+
+                        <!-- Project 4: Device Health Notifications -->
+                        <div class="featured-project-card">
+                            <div class="project-header">
+                                <div class="project-icon">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <div class="project-title-area">
+                                    <h4>Nexthink Device Health Automation</h4>
+                                    <span class="project-type">Professional</span>
+                                </div>
+                            </div>
+                            <p class="project-summary">
+                                Automated device metrics monitoring for 50K+ Sky devices using Nexthink platform. 
+                                Created comprehensive dashboards and personalized email notifications with proactive optimization tips, 
+                                significantly improving device performance and user experience.
+                            </p>
+                            <div class="project-tech">
+                                <span class="tech-tag">Nexthink</span>
+                                <span class="tech-tag">Automation</span>
+                                <span class="tech-tag">Email Integration</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -321,6 +349,28 @@
                         <div class="skill-item" data-level="85">
                             <i class="fab fa-git-alt"></i>
                             <span>Git</span>
+                            <div class="skill-bar"><div class="skill-progress"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="skill-category">
+                    <h3><i class="fas fa-cloud"></i> Cloud Technologies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-level="90">
+                            <i class="fab fa-google"></i>
+                            <span>Google Cloud Platform (GCP)</span>
+                            <div class="skill-bar"><div class="skill-progress"></div></div>
+                        </div>
+                        <div class="skill-item" data-level="80">
+                            <i class="fas fa-microsoft"></i>
+                            <span>Microsoft Fabric</span>
+                            <div class="skill-bar"><div class="skill-progress"></div></div>
+                        </div>
+                        <div class="skill-item" data-level="85">
+                            <i class="fas fa-database"></i>
+                            <span>Databricks</span>
                             <div class="skill-bar"><div class="skill-progress"></div></div>
                         </div>
                     </div>
@@ -488,13 +538,13 @@
                 
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="assets/images/blog-ai-copilot.jpg" alt="AI SQL Copilot Blog">
-                        <div class="blog-category">AI Development</div>
+                        <img src="assets/images/blog-etl.jpg" alt="ETL Pipelines Blog">
+                        <div class="blog-category">Technical</div>
                     </div>
                     <div class="blog-content">
-                        <h3>How I Built an AI SQL Copilot using ChatGPT and SQL Server</h3>
-                        <p>A deep dive into developing a natural language to SQL converter with business guardrails, 
-                           query optimization, and enterprise-level security considerations.</p>
+                        <h3>How to Build ETL Pipelines Efficiently for Small-Scale Data</h3>
+                        <p>Best practices for designing, automating, and optimizing ETL workflows when dealing with small to mid-scale data — 
+                            balancing performance, cost, and simplicity.</p>
                         <div class="blog-meta">
                             <span class="read-time"><i class="fas fa-clock"></i> 5 min read</span>
                             <span class="blog-date">Oct 2024</span>
@@ -522,13 +572,13 @@
 
                 <article class="blog-card">
                     <div class="blog-image">
-                        <img src="assets/images/blog-etl.jpg" alt="ETL Pipelines Blog">
-                        <div class="blog-category">Technical</div>
+                        <img src="assets/images/blog-ai-copilot.jpg" alt="AI Workbench Blog">
+                        <div class="blog-category">AI & Analytics</div>
                     </div>
                     <div class="blog-content">
-                        <h3>5 Lessons from Building ETL Pipelines for HR Analytics</h3>
-                        <p>Key insights and best practices learned while developing robust ETL pipelines for HR data, 
-                           including error handling, data quality, and performance optimization strategies.</p>
+                        <h3>How AI Workbenches Can Enhance Data Engineering and Analytics Flow</h3>
+                        <p>Exploring how AI workbenches simplify integration, collaboration, and automation — 
+                            bridging data engineering pipelines with real-time analytics and intelligent insights</p>
                         <div class="blog-meta">
                             <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
                             <span class="blog-date">Aug 2024</span>
@@ -616,7 +666,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Nithyashree Balachandran Portfolio. Built with passion for data and AI.</p>
+            <p>&copy; 2025 Nithyashree Balachandran Portfolio. Built with passion for data and AI.</p>
             <div class="footer-links">
                 <a href="#privacy">Privacy Policy</a>
                 <a href="#terms">Terms of Service</a>
