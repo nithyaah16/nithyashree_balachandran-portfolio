@@ -843,6 +843,266 @@ body {
     color: #ffffff;
 }
 
+/* ===== ACHIEVEMENTS ANIMATIONS ===== */
+.achievements {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Floating Stars Animation */
+.achievement-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #64ffda, transparent),
+        radial-gradient(1px 1px at 90px 40px, #ffd700, transparent),
+        radial-gradient(1px 1px at 130px 80px, #ff6b6b, transparent),
+        radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: achievement-twinkle 15s linear infinite;
+    z-index: 1;
+}
+
+/* Floating Particles */
+.floating-achievements-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.floating-achievements-particles::before,
+.floating-achievements-particles::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(45deg, #64ffda, #00bcd4);
+    border-radius: 50%;
+    animation: float-particle 8s ease-in-out infinite;
+}
+
+.floating-achievements-particles::before {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+.floating-achievements-particles::after {
+    top: 70%;
+    right: 15%;
+    animation-delay: 4s;
+    background: linear-gradient(45deg, #ffd700, #ff8c00);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+/* Constellation Background */
+.constellation-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, transparent 40%, rgba(100, 255, 218, 0.03) 50%, transparent 60%),
+        radial-gradient(ellipse at center, rgba(100, 255, 218, 0.05) 0%, transparent 70%);
+    animation: constellation-pulse 10s ease-in-out infinite;
+    z-index: 1;
+}
+
+/* Enhanced Title Animation */
+.achievement-title {
+    position: relative;
+    z-index: 10;
+}
+
+.title-text {
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(45deg, #ffffff, #64ffda, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: title-shimmer 3s ease-in-out infinite;
+}
+
+.title-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(ellipse, rgba(100, 255, 218, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: title-glow-pulse 4s ease-in-out infinite;
+    z-index: -1;
+}
+
+/* Enhanced Achievement Item Animations */
+.achievement-item {
+    position: relative;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: achievement-reveal 0.8s ease-out forwards;
+}
+
+.achievement-item:nth-child(1) { animation-delay: 0.2s; }
+.achievement-item:nth-child(2) { animation-delay: 0.4s; }
+.achievement-item:nth-child(3) { animation-delay: 0.6s; }
+
+.achievement-item::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #64ffda, #00bcd4, #ffd700, #64ffda);
+    background-size: 400% 400%;
+    border-radius: 17px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    animation: gradient-rotate 8s ease infinite;
+}
+
+.achievement-item:hover::before {
+    opacity: 1;
+}
+
+.achievement-icon {
+    animation: icon-float 3s ease-in-out infinite;
+}
+
+.achievement-icon:hover {
+    animation: icon-spin 1s ease-in-out;
+}
+
+/* Certificate Animation Enhancements */
+.certification-item {
+    position: relative;
+    transform: translateY(30px);
+    opacity: 0;
+    animation: cert-slide-in 0.6s ease-out forwards;
+}
+
+.certification-item:nth-child(1) { animation-delay: 0.3s; }
+.certification-item:nth-child(2) { animation-delay: 0.5s; }
+.certification-item:nth-child(3) { animation-delay: 0.7s; }
+
+.cert-icon {
+    position: relative;
+    animation: cert-icon-pulse 2s ease-in-out infinite;
+}
+
+.cert-icon::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid rgba(100, 255, 218, 0.3);
+    border-radius: 17px;
+    animation: cert-border-spin 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.certification-item:hover .cert-icon::after {
+    opacity: 1;
+}
+
+/* Keyframe Animations */
+@keyframes achievement-twinkle {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(90deg); }
+    50% { transform: translateY(0px) rotate(180deg); }
+    75% { transform: translateY(-5px) rotate(270deg); }
+}
+
+@keyframes float-particle {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    25% { transform: translateY(-20px) translateX(10px); }
+    50% { transform: translateY(-10px) translateX(-10px); }
+    75% { transform: translateY(-25px) translateX(5px); }
+}
+
+@keyframes constellation-pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes title-shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes title-glow-pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.6; }
+}
+
+@keyframes achievement-reveal {
+    from { 
+        transform: translateY(20px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+}
+
+@keyframes gradient-rotate {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes icon-float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes icon-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes cert-slide-in {
+    from { 
+        transform: translateY(30px) translateX(-20px); 
+        opacity: 0; 
+    }
+    to { 
+        transform: translateY(0) translateX(0); 
+        opacity: 1; 
+    }
+}
+
+@keyframes cert-icon-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes cert-border-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 /* ===== HOBBIES SECTION ===== */
 .hobbies {
     padding: 8rem 0;

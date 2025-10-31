@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initScrollEffects();
     initSkillBars();
+    initAchievementsAnimation();
     initContactForm();
     initParticles();
     initTypingEffect();
@@ -149,6 +150,171 @@ function initSkillBars() {
 
     window.addEventListener('scroll', animateSkillBars);
     animateSkillBars(); // Run once on load
+}
+
+// ===== ACHIEVEMENTS ANIMATIONS =====
+function initAchievementsAnimation() {
+    const achievementsSection = document.querySelector('.achievements');
+    if (!achievementsSection) return;
+
+    // Create additional floating particles
+    createAchievementParticles();
+    
+    // Intersection Observer for section visibility
+    const achievementObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-achievements');
+                triggerAchievementAnimations();
+            }
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: '-50px'
+    });
+
+    achievementObserver.observe(achievementsSection);
+}
+
+function createAchievementParticles() {
+    const achievementsSection = document.querySelector('.achievements');
+    if (!achievementsSection) return;
+
+    // Create cosmic particles
+    for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'cosmic-particle';
+        particle.style.cssText = `
+            position: absolute;
+            width: ${Math.random() * 4 + 2}px;
+            height: ${Math.random() * 4 + 2}px;
+            background: ${getRandomColor()};
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 5;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation: cosmic-float ${Math.random() * 10 + 8}s linear infinite;
+            box-shadow: 0 0 ${Math.random() * 20 + 10}px currentColor;
+        `;
+        achievementsSection.appendChild(particle);
+    }
+
+    // Add cosmic float animation to CSS if not exists
+    if (!document.querySelector('#cosmic-animation-styles')) {
+        const style = document.createElement('style');
+        style.id = 'cosmic-animation-styles';
+        style.textContent = `
+            @keyframes cosmic-float {
+                0% { transform: translateY(100vh) translateX(0px) rotate(0deg); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(-100px) translateX(${Math.random() * 200 - 100}px) rotate(360deg); opacity: 0; }
+            }
+            .cosmic-particle {
+                animation-delay: ${Math.random() * 8}s !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+function getRandomColor() {
+    const colors = [
+        '#64ffda', '#00bcd4', '#ffd700', '#ff6b6b', 
+        '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57',
+        '#ff9ff3', '#54a0ff', '#5f27cd', '#00d2d3'
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+}
+
+function triggerAchievementAnimations() {
+    const achievementItems = document.querySelectorAll('.achievement-item');
+    const certificationItems = document.querySelectorAll('.certification-item');
+    
+    // Stagger animation for achievement items
+    achievementItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.animationDelay = `${index * 0.2}s`;
+            item.classList.add('animate-in');
+        }, index * 100);
+    });
+
+    // Stagger animation for certification items
+    certificationItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.animationDelay = `${index * 0.15}s`;
+            item.classList.add('animate-in');
+        }, (index * 100) + 500);
+    });
+
+    // Create shooting stars effect
+    setTimeout(() => {
+        createShootingStars();
+    }, 1000);
+}
+
+function createShootingStars() {
+    const achievementsSection = document.querySelector('.achievements');
+    if (!achievementsSection) return;
+
+    for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.cssText = `
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                background: linear-gradient(45deg, #fff, #64ffda);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10;
+                left: ${Math.random() * 100}%;
+                top: ${Math.random() * 50}%;
+                box-shadow: 0 0 10px #64ffda, 0 0 20px #64ffda, 0 0 40px #64ffda;
+            `;
+            
+            // Add shooting animation
+            star.style.animation = `shooting-star ${Math.random() * 2 + 1}s linear forwards`;
+            
+            achievementsSection.appendChild(star);
+            
+            // Remove after animation
+            setTimeout(() => {
+                if (star.parentNode) {
+                    star.parentNode.removeChild(star);
+                }
+            }, 3000);
+        }, i * 800);
+    }
+
+    // Add shooting star animation
+    if (!document.querySelector('#shooting-star-styles')) {
+        const style = document.createElement('style');
+        style.id = 'shooting-star-styles';
+        style.textContent = `
+            @keyframes shooting-star {
+                0% { 
+                    transform: translateX(-100px) translateY(-100px) scale(0);
+                    opacity: 0;
+                }
+                10% {
+                    opacity: 1;
+                    transform: translateX(-50px) translateY(-50px) scale(1);
+                }
+                90% {
+                    opacity: 1;
+                    transform: translateX(200px) translateY(200px) scale(1);
+                }
+                100% { 
+                    transform: translateX(300px) translateY(300px) scale(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
 }
 
 // ===== CONTACT FORM =====
