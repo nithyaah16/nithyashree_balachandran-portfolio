@@ -160,6 +160,9 @@ function initAchievementsAnimation() {
     // Create additional floating particles
     createAchievementParticles();
     
+    // Ensure certification links work
+    initCertificationLinks();
+    
     // Intersection Observer for section visibility
     const achievementObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -174,6 +177,33 @@ function initAchievementsAnimation() {
     });
 
     achievementObserver.observe(achievementsSection);
+}
+
+function initCertificationLinks() {
+    const certLinks = document.querySelectorAll('.cert-link');
+    
+    certLinks.forEach(link => {
+        // Ensure the link is clickable
+        link.style.cursor = 'pointer';
+        link.style.pointerEvents = 'all';
+        
+        // Add click event listener as backup
+        link.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('http')) {
+                window.open(href, '_blank', 'noopener,noreferrer');
+            }
+        });
+        
+        // Add keyboard accessibility
+        link.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
 }
 
 function createAchievementParticles() {
