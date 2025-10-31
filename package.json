@@ -1,0 +1,44 @@
+{
+  "name": "space-portfolio",
+  "version": "1.0.0",
+  "description": "A stunning space-themed portfolio website with interactive animations and particle effects",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "dev": "live-server .",
+    "build": "echo 'No build step required - static HTML/CSS/JS'",
+    "deploy": "gh-pages -d .",
+    "test": "echo 'No tests specified'"
+  },
+  "keywords": [
+    "portfolio",
+    "space-theme",
+    "data-engineer",
+    "ai",
+    "interactive",
+    "animations",
+    "particles",
+    "responsive",
+    "github-pages"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/space-portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/space-portfolio/issues"
+  },
+  "homepage": "https://yourusername.github.io/space-portfolio",
+  "devDependencies": {
+    "gh-pages": "^6.0.0",
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

@@ -1,0 +1,4 @@
+<!-- This is a placeholder for the profile image -->
+<!-- Replace this with your actual professional photo -->
+<!-- Recommended size: 250x250px -->
+<!-- File: assets/images/profile.jpg -->
