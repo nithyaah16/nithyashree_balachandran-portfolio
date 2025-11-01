@@ -274,132 +274,185 @@
     <section id="skills" class="skills">
         <div class="container">
             <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-container">
+            <div class="skills-orbital-container">
                 
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-level="95">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
+                <!-- Navigation arrows -->
+                <button class="orbital-nav orbital-nav-left" id="skillsNavLeft">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="orbital-nav orbital-nav-right" id="skillsNavRight">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Orbital carousel -->
+                <div class="skills-orbital-wrapper">
+                    <div class="skills-orbital" id="skillsOrbital">
+                        
+                        <!-- Skill Category 1: Programming Languages -->
+                        <div class="orbital-skill-card" data-category="Programming Languages">
+                            <div class="orbital-card-inner">
+                                <div class="orbital-card-header">
+                                    <i class="fas fa-code"></i>
+                                    <h3>Programming Languages</h3>
+                                </div>
+                                <div class="orbital-skills-list">
+                                    <div class="orbital-skill-item" data-level="95">
+                                        <i class="fab fa-python"></i>
+                                        <span>Python</span>
+                                        <div class="orbital-skill-level">95%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="90">
+                                        <i class="fas fa-database"></i>
+                                        <span>SQL</span>
+                                        <div class="orbital-skill-level">90%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="80">
+                                        <i class="fab fa-html5"></i>
+                                        <span>HTML/CSS</span>
+                                        <div class="orbital-skill-level">80%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="75">
+                                        <i class="fab fa-r-project"></i>
+                                        <span>R</span>
+                                        <div class="orbital-skill-level">75%</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-item" data-level="90">
-                            <i class="fas fa-database"></i>
-                            <span>SQL</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
+
+                        <!-- Skill Category 2: Frameworks & Libraries -->
+                        <div class="orbital-skill-card" data-category="Frameworks & Libraries">
+                            <div class="orbital-card-inner">
+                                <div class="orbital-card-header">
+                                    <i class="fas fa-tools"></i>
+                                    <h3>Frameworks & Libraries</h3>
+                                </div>
+                                <div class="orbital-skills-list">
+                                    <div class="orbital-skill-item" data-level="85">
+                                        <i class="fas fa-fire"></i>
+                                        <span>PySpark</span>
+                                        <div class="orbital-skill-level">85%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="80">
+                                        <i class="fas fa-exchange-alt"></i>
+                                        <span>REST APIs</span>
+                                        <div class="orbital-skill-level">80%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="90">
+                                        <i class="fas fa-table"></i>
+                                        <span>Pandas</span>
+                                        <div class="orbital-skill-level">90%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="75">
+                                        <i class="fas fa-flask"></i>
+                                        <span>Flask</span>
+                                        <div class="orbital-skill-level">75%</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-item" data-level="80">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML/CSS</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
+
+                        <!-- Skill Category 3: Databases & Tools -->
+                        <div class="orbital-skill-card" data-category="Databases & Tools">
+                            <div class="orbital-card-inner">
+                                <div class="orbital-card-header">
+                                    <i class="fas fa-server"></i>
+                                    <h3>Databases & Tools</h3>
+                                </div>
+                                <div class="orbital-skills-list">
+                                    <div class="orbital-skill-item" data-level="95">
+                                        <i class="fas fa-database"></i>
+                                        <span>SQL Server</span>
+                                        <div class="orbital-skill-level">95%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="80">
+                                        <i class="fas fa-database"></i>
+                                        <span>MySQL</span>
+                                        <div class="orbital-skill-level">80%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="90">
+                                        <i class="fas fa-chart-bar"></i>
+                                        <span>Power BI</span>
+                                        <div class="orbital-skill-level">90%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="85">
+                                        <i class="fab fa-git-alt"></i>
+                                        <span>Git</span>
+                                        <div class="orbital-skill-level">85%</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="skill-item" data-level="75">
-                            <i class="fab fa-r-project"></i>
-                            <span>R</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
+
+                        <!-- Skill Category 4: Cloud Technologies -->
+                        <div class="orbital-skill-card" data-category="Cloud Technologies">
+                            <div class="orbital-card-inner">
+                                <div class="orbital-card-header">
+                                    <i class="fas fa-cloud"></i>
+                                    <h3>Cloud Technologies</h3>
+                                </div>
+                                <div class="orbital-skills-list">
+                                    <div class="orbital-skill-item" data-level="90">
+                                        <i class="fab fa-google"></i>
+                                        <span>Google Cloud Platform</span>
+                                        <div class="orbital-skill-level">90%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="80">
+                                        <i class="fas fa-microsoft"></i>
+                                        <span>Microsoft Fabric</span>
+                                        <div class="orbital-skill-level">80%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="85">
+                                        <i class="fas fa-database"></i>
+                                        <span>Databricks</span>
+                                        <div class="orbital-skill-level">85%</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Skill Category 5: AI & Machine Learning -->
+                        <div class="orbital-skill-card" data-category="AI & Machine Learning">
+                            <div class="orbital-card-inner">
+                                <div class="orbital-card-header">
+                                    <i class="fas fa-brain"></i>
+                                    <h3>AI & Machine Learning</h3>
+                                </div>
+                                <div class="orbital-skills-list">
+                                    <div class="orbital-skill-item" data-level="90">
+                                        <i class="fas fa-robot"></i>
+                                        <span>OpenAI API</span>
+                                        <div class="orbital-skill-level">90%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="85">
+                                        <i class="fas fa-link"></i>
+                                        <span>LangChain</span>
+                                        <div class="orbital-skill-level">85%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="85">
+                                        <i class="fas fa-comments"></i>
+                                        <span>ChatGPT</span>
+                                        <div class="orbital-skill-level">85%</div>
+                                    </div>
+                                    <div class="orbital-skill-item" data-level="75">
+                                        <i class="fab fa-github"></i>
+                                        <span>GitHub Copilot</span>
+                                        <div class="orbital-skill-level">75%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Frameworks & Libraries</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-level="85">
-                            <i class="fas fa-fire"></i>
-                            <span>PySpark</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="80">
-                            <i class="fas fa-exchange-alt"></i>
-                            <span>REST APIs</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="90">
-                            <i class="fas fa-table"></i>
-                            <span>Pandas</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="75">
-                            <i class="fas fa-flask"></i>
-                            <span>Flask</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-server"></i> Databases & Tools</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-level="95">
-                            <i class="fas fa-database"></i>
-                            <span>SQL Server</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="80">
-                            <i class="fas fa-database"></i>
-                            <span>MySQL</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="90">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Power BI</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="85">
-                            <i class="fab fa-git-alt"></i>
-                            <span>Git</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-cloud"></i> Cloud Technologies</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-level="90">
-                            <i class="fab fa-google"></i>
-                            <span>Google Cloud Platform (GCP)</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="80">
-                            <i class="fas fa-microsoft"></i>
-                            <span>Microsoft Fabric</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="85">
-                            <i class="fas fa-database"></i>
-                            <span>Databricks</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> AI & Machine Learning</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item" data-level="90">
-                            <i class="fas fa-robot"></i>
-                            <span>OpenAI API</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="85">
-                            <i class="fas fa-link"></i>
-                            <span>LangChain</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="85">
-                            <i class="fas fa-comments"></i>
-                            <span>ChatGPT</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                        <div class="skill-item" data-level="75">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub Copilot</span>
-                            <div class="skill-bar"><div class="skill-progress"></div></div>
-                        </div>
-                    </div>
+                <!-- Orbital indicators -->
+                <div class="orbital-indicators" id="orbitalIndicators">
+                    <span class="orbital-dot active" data-index="0"></span>
+                    <span class="orbital-dot" data-index="1"></span>
+                    <span class="orbital-dot" data-index="2"></span>
+                    <span class="orbital-dot" data-index="3"></span>
+                    <span class="orbital-dot" data-index="4"></span>
                 </div>
 
             </div>
@@ -625,17 +678,13 @@
                 </div>
 
                 <div class="contact-form">
-                    <!-- Netlify Form (Primary) -->
+                    <!-- Netlify Contact Form -->
                     <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contactForm">
                         <!-- Hidden fields for Netlify -->
                         <input type="hidden" name="form-name" value="contact" />
                         <div style="display: none;">
-                            <label>Don't fill this out: <input name="bot-field" /></label>
+                            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                         </div>
-                        
-                        <!-- Alternative: Formspree (uncomment and add your form ID if needed)
-                        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contactForm">
-                        -->
                         
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -657,6 +706,18 @@
                             <i class="fas fa-paper-plane"></i>
                             Send Message
                         </button>
+                        
+                        <!-- Form status messages -->
+                        <div id="form-status" class="form-status" style="display: none;">
+                            <div class="status-success">
+                                <i class="fas fa-check-circle"></i>
+                                Thank you! Your message has been sent successfully.
+                            </div>
+                            <div class="status-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Sorry, there was an error sending your message. Please try again.
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

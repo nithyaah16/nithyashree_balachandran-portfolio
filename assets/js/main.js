@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize all components
     initNavigation();
     initScrollEffects();
-    initSkillBars();
+    initSkillsOrbital();
     initAchievementsAnimation();
     initContactForm();
     initParticles();
@@ -126,30 +126,234 @@ function revealOnScroll() {
     });
 }
 
-// ===== SKILL BARS ANIMATION =====
-function initSkillBars() {
-    const skillBars = document.querySelectorAll('.skill-item');
+// ===== SKILLS ORBITAL CAROUSEL =====
+function initSkillsOrbital() {
+    const orbital = document.getElementById('skillsOrbital');
+    const leftNav = document.getElementById('skillsNavLeft');
+    const rightNav = document.getElementById('skillsNavRight');
+    const indicators = document.querySelectorAll('.orbital-dot');
+    const cards = document.querySelectorAll('.orbital-skill-card');
     
-    const animateSkillBars = () => {
-        skillBars.forEach(skill => {
-            const skillTop = skill.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
+    console.log('Initializing orbital carousel:', {
+        orbital: !!orbital,
+        leftNav: !!leftNav,
+        rightNav: !!rightNav,
+        indicators: indicators.length,
+        cards: cards.length
+    });
+    
+    if (!orbital || !leftNav || !rightNav || cards.length === 0) {
+        console.error('Missing orbital carousel elements');
+        return;
+    }
+    
+    let currentIndex = 0;
+    const totalCards = cards.length;
+    let isRotating = false;
+    
+    // Auto-rotation timer
+    let autoRotateTimer;
+    const autoRotateDelay = 4000; // 4 seconds
+    
+    function updateOrbitalPosition() {
+        if (isRotating) return;
+        isRotating = true;
+        
+        console.log('Updating orbital position to index:', currentIndex);
+        
+        // Update card positions and styling
+        cards.forEach((card, index) => {
+            card.classList.remove('active');
             
-            if (skillTop < windowHeight - 100) {
-                const progressBar = skill.querySelector('.skill-progress');
-                const level = skill.getAttribute('data-level');
-                
-                if (progressBar && !progressBar.style.width) {
-                    setTimeout(() => {
-                        progressBar.style.width = level + '%';
-                    }, 200);
-                }
+            // Calculate position relative to current active card
+            let relativePosition = index - currentIndex;
+            
+            // Wrap around for circular effect
+            if (relativePosition > totalCards / 2) {
+                relativePosition -= totalCards;
+            } else if (relativePosition < -totalCards / 2) {
+                relativePosition += totalCards;
+            }
+            
+            // Position the cards
+            if (relativePosition === 0) {
+                // Active card - center
+                card.classList.add('active');
+                card.style.left = '50%';
+                card.style.transform = 'translateX(-50%) scale(1)';
+                card.style.zIndex = '10';
+                card.style.opacity = '1';
+            } else if (relativePosition === 1) {
+                // Next card - right
+                card.style.left = 'calc(50% + 300px)';
+                card.style.transform = 'translateX(-50%) scale(0.6) rotateY(-20deg)';
+                card.style.zIndex = '0';
+                card.style.opacity = '0.7';
+            } else if (relativePosition === 2) {
+                // Far right
+                card.style.left = 'calc(50% + 600px)';
+                card.style.transform = 'translateX(-50%) scale(0.5) rotateY(-40deg)';
+                card.style.zIndex = '-1';
+                card.style.opacity = '0.5';
+            } else if (relativePosition === -1) {
+                // Previous card - left
+                card.style.left = 'calc(50% - 300px)';
+                card.style.transform = 'translateX(-50%) scale(0.6) rotateY(20deg)';
+                card.style.zIndex = '0';
+                card.style.opacity = '0.7';
+            } else if (relativePosition === -2) {
+                // Far left
+                card.style.left = 'calc(50% - 600px)';
+                card.style.transform = 'translateX(-50%) scale(0.5) rotateY(40deg)';
+                card.style.zIndex = '-1';
+                card.style.opacity = '0.5';
+            } else {
+                // Hidden cards
+                card.style.opacity = '0';
+                card.style.zIndex = '-2';
             }
         });
-    };
-
-    window.addEventListener('scroll', animateSkillBars);
-    animateSkillBars(); // Run once on load
+        
+        // Update indicators
+        indicators.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+        
+        // Reset rotation flag after animation
+        setTimeout(() => {
+            isRotating = false;
+        }, 800);
+    }
+    
+    function nextSkill() {
+        currentIndex = (currentIndex + 1) % totalCards;
+        updateOrbitalPosition();
+        resetAutoRotate();
+    }
+    
+    function prevSkill() {
+        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+        updateOrbitalPosition();
+        resetAutoRotate();
+    }
+    
+    function goToSkill(index) {
+        if (index !== currentIndex && !isRotating && index >= 0 && index < totalCards) {
+            currentIndex = index;
+            updateOrbitalPosition();
+            resetAutoRotate();
+        }
+    }
+    
+    function resetAutoRotate() {
+        clearTimeout(autoRotateTimer);
+        autoRotateTimer = setTimeout(nextSkill, autoRotateDelay);
+    }
+    
+    function startAutoRotate() {
+        autoRotateTimer = setTimeout(nextSkill, autoRotateDelay);
+    }
+    
+    function stopAutoRotate() {
+        clearTimeout(autoRotateTimer);
+    }
+    
+    // Event listeners
+    leftNav.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('Left nav clicked');
+        prevSkill();
+    });
+    
+    rightNav.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('Right nav clicked');
+        nextSkill();
+    });
+    
+    // Indicator click events
+    indicators.forEach((dot, index) => {
+        dot.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Indicator clicked:', index);
+            goToSkill(index);
+        });
+    });
+    
+    // Card click events for mobile/touch interaction
+    cards.forEach((card, index) => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (index !== currentIndex) {
+                console.log('Card clicked:', index);
+                goToSkill(index);
+            }
+        });
+    });
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        const skillsSection = document.querySelector('.skills');
+        if (skillsSection) {
+            const rect = skillsSection.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    prevSkill();
+                } else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    nextSkill();
+                }
+            }
+        }
+    });
+    
+    // Pause auto-rotate on hover
+    const skillsContainer = document.querySelector('.skills-orbital-container');
+    if (skillsContainer) {
+        skillsContainer.addEventListener('mouseenter', stopAutoRotate);
+        skillsContainer.addEventListener('mouseleave', startAutoRotate);
+    }
+    
+    // Touch/swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    if (orbital) {
+        orbital.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoRotate();
+        }, { passive: true });
+        
+        orbital.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoRotate();
+        }, { passive: true });
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const swipeDistance = touchEndX - touchStartX;
+        
+        if (Math.abs(swipeDistance) > swipeThreshold) {
+            if (swipeDistance > 0) {
+                prevSkill();
+            } else {
+                nextSkill();
+            }
+        }
+    }
+    
+    // Initialize - set first card as active and start
+    updateOrbitalPosition();
+    startAutoRotate();
+    
+    console.log('Orbital carousel initialized successfully');
 }
 
 // ===== ACHIEVEMENTS ANIMATIONS =====
@@ -350,6 +554,7 @@ function createShootingStars() {
 // ===== CONTACT FORM =====
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('form-status');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
@@ -364,30 +569,88 @@ function initContactForm() {
             
             // Basic validation
             if (!name || !email || !subject || !message) {
-                showNotification('Please fill in all fields', 'error');
+                showFormStatus('Please fill in all fields', 'error');
                 return;
             }
             
             if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address', 'error');
+                showFormStatus('Please enter a valid email address', 'error');
                 return;
             }
             
-            // Simulate form submission
+            // Show loading state
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
             
-            setTimeout(() => {
+            // Submit to Netlify
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: encode({
+                    'form-name': 'contact',
+                    'name': name,
+                    'email': email,
+                    'subject': subject,
+                    'message': message
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    contactForm.reset();
+                    showFormStatus('Thank you! Your message has been sent successfully. I\'ll get back to you soon!', 'success');
+                } else {
+                    showFormStatus('There was an error sending your message. Please try again.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Form submission error:', error);
+                showFormStatus('There was an error sending your message. Please try again later.', 'error');
+            })
+            .finally(() => {
+                // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-                contactForm.reset();
-                showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-            }, 2000);
+            });
         });
     }
+}
+
+// Encode form data for Netlify
+function encode(data) {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        .join('&');
+}
+
+function showFormStatus(message, type) {
+    const formStatus = document.getElementById('form-status');
+    if (!formStatus) return;
+    
+    // Hide all status messages first
+    const successDiv = formStatus.querySelector('.status-success');
+    const errorDiv = formStatus.querySelector('.status-error');
+    
+    successDiv.style.display = 'none';
+    errorDiv.style.display = 'none';
+    
+    // Show appropriate message
+    if (type === 'success') {
+        successDiv.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+        successDiv.style.display = 'flex';
+    } else {
+        errorDiv.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${message}`;
+        errorDiv.style.display = 'flex';
+    }
+    
+    formStatus.style.display = 'block';
+    
+    // Auto-hide after 5 seconds
+    setTimeout(() => {
+        formStatus.style.display = 'none';
+    }, 5000);
 }
 
 function isValidEmail(email) {
